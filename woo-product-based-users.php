@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-class WooProductBasedUsers {
+class Woo_Product_Based_User {
 
 
 	/**
@@ -58,7 +58,7 @@ class WooProductBasedUsers {
 	public function loader() {
 		require_once( __DIR__ . '/inc/component-interface.php' );
 		require_once( __DIR__ . '/inc/class-change-role.php' );
-		require_once( __DIR__ . '/inc/class-auto-complete-order.php' );
+    require_once( __DIR__ . '/inc/class-product-option.php' );
 	}
 
 	/**
@@ -68,8 +68,8 @@ class WooProductBasedUsers {
 	 */
 	private function get_components(): array {
 		return array(
-			new ChangeRole(),
-			new AutoCompleteOrder(),
+			new Change_Role(),
+      new Product_Option(),
 		);
 	}
 }
@@ -80,6 +80,6 @@ class WooProductBasedUsers {
 add_action(
 	'woocommerce_loaded',
 	function () {
-		( new WooProductBasedUsers() )->initialize();
+		( new Woo_Product_Based_User() )->initialize();
 	}
 );
