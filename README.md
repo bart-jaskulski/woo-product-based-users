@@ -2,7 +2,7 @@
 
 To get started run
 
-`composer install`
+`composer install` then `composer install-codestandards`
 
 And hack around the code. Ofc you will have to put it into living WordPress with WooCommerce.
 
@@ -21,3 +21,11 @@ This may become useful [woocommerce_new_customer_data](https://woocommerce.githu
 ## Dev env
 
 With composer you install [grumphp](https://github.com/phpro/grumphp/). For now with simple config, that tool checks whether you have added description to git commit and if you code follows WP coding standard. Soon I'll improve.
+
+---
+
+### Update:
+
+Grumphp should be ruthless now. Added some configs to composer, with two commands:
+* `run-phpcs` for checking if your code follows rules,
+* `run-phpcbf` for automatically fix small issues

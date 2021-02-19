@@ -1,11 +1,11 @@
 <?php
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
-interface Component_Interface
-{
+interface Component_Interface {
 
-  /**
-   * Add all hooks and filters to WordPress.
-   */
-  public function initialize();
+
+	/**
+	 * Add all hooks and filters to WordPress.
+	 */
+	public function initialize();
 }
