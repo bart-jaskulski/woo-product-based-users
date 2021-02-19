@@ -18,15 +18,16 @@
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-class Woo_Product_Based_User {
+class Woo_Product_Based_Users {
 
 
 	/**
-	 * Array of injected components
+	 * Array of injected components.
 	 *
 	 * @var array
 	 */
 	protected $components = array();
+
 
 	/**
 	 * Create object loading files and inserting components.
@@ -38,6 +39,7 @@ class Woo_Product_Based_User {
 			$this->components = $this->get_components();
 		}
 	}
+
 
 	/**
 	 * Start each component respecitively.
@@ -58,7 +60,7 @@ class Woo_Product_Based_User {
 	public function loader() {
 		require_once( __DIR__ . '/inc/component-interface.php' );
 		require_once( __DIR__ . '/inc/class-change-role.php' );
-    require_once( __DIR__ . '/inc/class-product-option.php' );
+		require_once( __DIR__ . '/inc/class-product-option.php' );
 	}
 
 	/**
@@ -69,10 +71,11 @@ class Woo_Product_Based_User {
 	private function get_components(): array {
 		return array(
 			new Change_Role(),
-      new Product_Option(),
+			new Product_Option(),
 		);
 	}
 }
+
 
 /**
  * Start plugin when WooCommerce is up and running.
@@ -80,6 +83,6 @@ class Woo_Product_Based_User {
 add_action(
 	'woocommerce_loaded',
 	function () {
-		( new Woo_Product_Based_User() )->initialize();
+		( new Woo_Product_Based_Users() )->initialize();
 	}
 );
