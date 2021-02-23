@@ -1,4 +1,11 @@
 <?php
+/**
+ * This class add dropdown selector to advanced product options
+ * that allow to assign user role to a specified product.
+ *
+ * @package denotnet
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -10,7 +17,7 @@ class Product_Option implements Component_Interface {
 	 * Hook necesary actions and filters.
 	 */
 	public function initialize() {
-		add_action( 'woocommerce_product_options_general_product_data', array( $this, 'add_related_role_selector' ) );
+		add_action( 'woocommerce_product_options_advanced', array( $this, 'add_related_role_selector' ) );
 		add_action( 'woocommerce_process_product_meta', array( $this, 'action_save_related_role_selector' ) );
 	}
 
@@ -47,11 +54,13 @@ class Product_Option implements Component_Interface {
 	 * @param  int $post_id Current product ID.
 	 */
 	public function action_save_related_role_selector( int $post_id ) {
-		$role = $_POST['_related_role'];
-		if ( ! empty( $role ) ) {
-			update_post_meta( $post_id, '_related_role', esc_attr( $role ) );
-		} else {
-			update_post_meta( $post_id, '_related_role', '' );
+		if ( isset( $_POST['_related_role'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$role = sanitize_text_field( wp_unslash( $_POST['_related_role'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( ! empty( $role ) ) {
+				update_post_meta( $post_id, '_related_role', esc_attr( $role ) );
+			} else {
+				update_post_meta( $post_id, '_related_role', '' );
+			}
 		}
 	}
 }

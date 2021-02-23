@@ -1,11 +1,21 @@
 <?php
+/**
+ * This class changes user role after checkout if product has any
+ * role assigned.
+ *
+ * @package denotnet
+ */
+
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Change user role and save it
+ */
 class Change_Role implements Component_Interface {
 
 
 	/**
-	 * @inheritDoc
+	 * Hook necesary actions and filters.
 	 */
 	public function initialize() {
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'change_role_on_checkout' ), 10, 3 );

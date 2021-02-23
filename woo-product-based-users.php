@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Custom Roles for WooCommerce
  * Plugin URI:
- * Description:
- * Version: 0.1.0
+ * Description: Custom role assignement extension for WooCommerce
+ * Version: 1.0
  * Author: Dentonet
  * Author URI: https://dentonet.pl
- * Developer:
- * Developer URI: https://github.com/
+ * Developer: Michal Gladysz
+ * Developer URI: https://github.com/mgladysz
  * Domain Path: /languages
  *
  * WC requires at least: 5.0
@@ -18,6 +18,9 @@
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
+/**
+ * Main plugin class responsible for lauching all components.
+ */
 class Woo_Product_Based_Users {
 
 
