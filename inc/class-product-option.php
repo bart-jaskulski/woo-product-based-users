@@ -22,13 +22,12 @@ class Product_Option implements Component_Interface {
 
 		global $wp_roles;
 
-		$i = 0;
+		$options = array();
 
 		// Add all roles names to a dropdown except an Administrator.
-		foreach ( $wp_roles->roles as $role ) {
-			if ( ! in_array( $role['name'], array( 'Administrator' ) ) ) {
-				$options[ $i ] = $role['name'];
-				$i++;
+		foreach ( $wp_roles->get_names() as $key => $role ) {
+			if ( ! in_array( $role, array( 'Administrator' ) ) ) {
+				$options[ $key ] = $role;
 			}
 		}
 
@@ -37,7 +36,6 @@ class Product_Option implements Component_Interface {
 				'id'      => '_related_role',
 				'label'   => __( 'Related customer role', 'woocommerce' ),
 				'options' => $options,
-				'value'   => $role,
 			)
 		);
 	}
