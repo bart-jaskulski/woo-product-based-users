@@ -3,7 +3,7 @@
  * Plugin Name: Custom Roles for WooCommerce
  * Plugin URI:
  * Description: Custom role assignement extension for WooCommerce
- * Version: 1.0
+ * Version: 1.0.0
  * Author: Dentonet
  * Author URI: https://dentonet.pl
  * Developer: Michal Gladysz
